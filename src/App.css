@@ -1,11 +1,22 @@
 .app-screen, .app-screen-loading-wrapper {
-    height: 100vh;
-    width: 100vw;
-
+    height: 100%;
+    width: 100%;
 }
 
 .app-screen-loading-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* ########## GLOBAL STYLES ########## */
+
+/* Root style variables just incase we want to change styling quickly */
+:root {
+    --primary-color: #707070;
+    --secondary-color: white;
+}
+
+.BOLD {
+    font-weight: bold;
 }

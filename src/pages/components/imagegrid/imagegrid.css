@@ -1,4 +1,4 @@
 .image-grid-screen {
     height: 95vh;
-    width: 100vw;
+    background-color: var(--primary-color);
 }
