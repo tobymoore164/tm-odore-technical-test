@@ -2,3 +2,11 @@
     height: 100%;
     width: 100%;
 }
+
+.no-content-wrapper {
+    height: 95vh;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
