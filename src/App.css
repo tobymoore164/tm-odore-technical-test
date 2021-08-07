@@ -1,6 +1,7 @@
 .app-screen, .app-screen-loading-wrapper {
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
 .app-screen-loading-wrapper {

@@ -1,4 +1,27 @@
 .image-grid-screen {
-    height: 95vh;
+    height: 94vh;
     background-color: var(--primary-color);
+}
+
+.image-grid-wrapper {
+    padding: 0px 20vw;
+    height: 100%;
+}
+
+.image-grid-content {
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.demo-image {
+    background-color: orange;
+    height: 300px;
+    width: 300px;
+    margin: 20px;
 }
