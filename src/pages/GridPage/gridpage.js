@@ -13,15 +13,32 @@ function GridPage() {
 
   // If image feed is empty it's first load, get the first 20 images.
   if (imageFeed.length === 0) {
-    // Request 20 images
-    RequestImagesByAmount(20).then((res) => {
-      // Set those 20 images to the main feed
-      setImageFeed(res);
+    // Request 30 images
+    RequestNewImages();
+  }
+
+  console.log(imageFeed.length);
+
+  function RequestNewImages() {
+    RequestImagesByAmount(30).then((res) => {
+      // If there's no feed, set the state directly
+      if (imageFeed.length === 0) {
+        setImageFeed(res);
+        setTimeout(() => {
+          setContentReady(true);
+        }, 1000);
+      } else {
+        // There's already a feed, push them to the current feed
+        res.forEach((newImage) => {
+          console.log({ ...newImage });
+          setImageFeed((prevState) => [...prevState, newImage]);
+        });
+        setTimeout(() => {
+          setContentReady(true);
+        }, 1000);
+      }
 
       // USE CALLBACK HERE INSTEAD, Set content to ready, using a timeout to fix race condition due to setState not being finished when trying to set content ready
-      setTimeout(() => {
-        setContentReady(true);
-      }, 1000);
     });
   }
 
@@ -30,7 +47,7 @@ function GridPage() {
       <Header />
       {/* Conditional render for if there's content in the imageFeed */}
       {contentReady ? (
-        <ImageGrid imageFeed={imageFeed} />
+        <ImageGrid imageFeed={imageFeed} RequestNewImages={RequestNewImages} />
       ) : (
         <div className="no-content-wrapper">
           <CircularProgress color="inherit" />

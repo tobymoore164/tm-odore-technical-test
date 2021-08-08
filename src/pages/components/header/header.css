@@ -21,3 +21,11 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
+
+.lightbox-close {
+    justify-content: flex-end;
+}
+
+.image-lightbox-close-icon {
+    font-size: 20px;
+}

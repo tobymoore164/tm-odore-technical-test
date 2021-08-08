@@ -1,0 +1,30 @@
+.image-lightbox-action {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* MOBILE STYLING */
+
+/* First Breakpoint */
+@media only screen and (max-width: 1550px) {    
+    .image-lightbox-action {
+        flex: 0.5;
+    }
+}
+
+/* Second Breakpoint */
+@media only screen and (max-width: 1250px) {
+    .image-lightbox-action {
+        flex: 0.2;
+    }
+}
+
+/* Third Breakpoint */
+@media only screen and (max-width: 1150px) {
+    .image-lightbox-image-content-actions {
+        flex-direction: column;
+    }
+}

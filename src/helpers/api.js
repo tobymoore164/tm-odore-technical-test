@@ -14,12 +14,12 @@ export async function RequestImagesByAmount(amount) {
   tempFeed.forEach((image, index) => {
     var img = new Image();
     img.src = image.urls.small;
-    img.addEventListener("load", function () {
+    img.onload = function () {
       tempFeed[index]["size"] = {
         height: this.naturalHeight,
         width: this.naturalWidth,
       };
-    });
+    };
   });
 
   // return the filtered array including size property

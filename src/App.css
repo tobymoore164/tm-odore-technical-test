@@ -21,3 +21,8 @@
 .BOLD {
     font-weight: bold;
 }
+
+.STANDARD-ICON {
+    font-size: 25px;
+    color: var(--secondary-color);
+}

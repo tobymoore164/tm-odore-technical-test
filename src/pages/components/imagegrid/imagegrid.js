@@ -4,8 +4,20 @@ import useOnScreen from "../../../hooks/useOnScreen";
 import { useRef } from "react";
 import Masonry from "react-masonry-css";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { useState } from "react";
+import ImageLightbox from "../imagelightbox/imagelightbox";
 
 function ImageGrid(props) {
+  const [showImageLightbox, setShowImageLightbox] = useState(false);
+
+  // Store the image we've selected to pass into clightbox
+  const [selectedImage, setSelectedImage] = useState();
+
+  // Get the image from the feed based on selected index
+  function handleSetSelectedImage(index) {
+    setSelectedImage({ index: index, image: props.imageFeed[index] });
+  }
+
   // Reference for the "bottom of scroll" element used to refresh image feed
   const ref = useRef();
   const isVisible = useOnScreen(ref);
@@ -19,6 +31,19 @@ function ImageGrid(props) {
 
   return (
     <div className="image-grid-screen">
+      {/* Conditional render for the lightbox */}
+      {showImageLightbox ? (
+        <ImageLightbox
+          feedLength={props.imageFeed.length}
+          selectedImage={selectedImage}
+          handleSetSelectedImage={handleSetSelectedImage}
+          handleCloseLightbox={() => {
+            setShowImageLightbox(false);
+          }}
+        />
+      ) : (
+        <></>
+      )}
       <div className="image-grid-wrapper">
         {/* Responsible for the masonry image layout */}
         <Masonry
@@ -39,13 +64,15 @@ function ImageGrid(props) {
                 width={image.size.width}
                 height={image.size.height}
                 src={image.urls.small} // use normal <img> attributes as props
+                onClick={() => {
+                  handleSetSelectedImage(index); // set the selected image index to the one we're tapping on
+                  setShowImageLightbox(true); // show the lightbox
+                }}
               />
             );
           })}
         </Masonry>
-        <div className="image-grid-content-bottom" ref={ref}>
-          Bottom
-        </div>
+        <div className="image-grid-content-bottom" ref={ref}></div>
       </div>
     </div>
   );

@@ -1,0 +1,59 @@
+.image-lightbox-screen {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: #ffffff;
+    top: 0;
+    z-index: 99;
+}
+
+.image-lightbox-content {
+    height: 94vh;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: row;
+}
+
+.image-lightbox-mid {
+    flex: 5;
+    display: flex;
+    justify-content: center;
+    overflow: scroll;
+    margin: 20px 0px;
+}
+
+.image-lightbox-image-content-description {
+    padding: 10px 0px;
+    font-size: 16px;
+    color: var(--secondary-color);
+}
+
+.image-lightbox-image-content-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--secondary-color);
+    padding: 20px 0px;
+}
+
+.image-lightbox-image-likes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-lightbox-image-likes-text {
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+/* MOBILE STYLING */
+@media only screen and (max-width: 1150px) {
+    .image-lightbox-image-download {
+        margin-top: 10px;
+    }
+
+    .image-lightbox-image-content-wrapper {
+        overflow: scroll;
+    }
+}
