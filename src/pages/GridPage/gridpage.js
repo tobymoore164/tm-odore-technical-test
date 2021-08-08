@@ -1,5 +1,4 @@
 import "./gridpage.css";
-
 import Header from "../components/header/header";
 import ImageGrid from "../components/imagegrid/imagegrid";
 import { useState } from "react";

@@ -1,16 +1,9 @@
 import "./imagegrid.css";
-import {
-  LazyLoadComponent,
-  LazyLoadImage,
-} from "react-lazy-load-image-component";
-import { useRef } from "react";
-import Masonry from "react-masonry-css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useState } from "react";
 import ImageLightbox from "../imagelightbox/imagelightbox";
-import { Button } from "@material-ui/core";
 import MasonryInfiniteScroller from "react-masonry-infinite";
-import { GetSizesByIndex } from "../../../helpers/api";
 
 function ImageGrid(props) {
   const [showImageLightbox, setShowImageLightbox] = useState(false);
@@ -60,8 +53,6 @@ function ImageGrid(props) {
                 className="image-grid-item"
                 alt={image.alt_description}
                 effect="blur"
-                /* width={400}
-                height={400} */
                 width={image.size != null ? image.size.width : 400}
                 height={image.size != null ? image.size.height : 400}
                 src={image.urls.regular}
