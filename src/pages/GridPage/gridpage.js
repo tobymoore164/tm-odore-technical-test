@@ -1,40 +1,39 @@
 import "./gridpage.css";
-import env from "react-dotenv";
+
 import Header from "../components/header/header";
 import ImageGrid from "../components/imagegrid/imagegrid";
 import { useState } from "react";
-import axios from "axios";
 import { CircularProgress } from "@material-ui/core";
-/* env.UNSPLASH_ACCESS_KEY */
+import { RequestImagesByAmount } from "../../helpers/api";
 
 function GridPage() {
+  // Variables
+  const [contentReady, setContentReady] = useState(false);
   const [imageFeed, setImageFeed] = useState([]);
 
-  // If image feed is empty, first load so request images
+  // If image feed is empty it's first load, get the first 20 images.
   if (imageFeed.length === 0) {
-    /* axios
-      .get(
-        `https://api.unsplash.com/photos/?per_page=10&client_id=${env.UNSPLASH_ACCESS_KEY}`
-      )
-      .then((res) => {
-        setImageFeed(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      }); */
-  }
+    // Request 20 images
+    RequestImagesByAmount(20).then((res) => {
+      // Set those 20 images to the main feed
+      setImageFeed(res);
 
-  console.log("Image Feed: ", imageFeed);
+      // USE CALLBACK HERE INSTEAD, Set content to ready, using a timeout to fix race condition due to setState not being finished when trying to set content ready
+      setTimeout(() => {
+        setContentReady(true);
+      }, 1000);
+    });
+  }
 
   return (
     <div className="gridpage-screen">
       <Header />
       {/* Conditional render for if there's content in the imageFeed */}
-      {true ? (
+      {contentReady ? (
         <ImageGrid imageFeed={imageFeed} />
       ) : (
         <div className="no-content-wrapper">
-          <CircularProgress color="black" />
+          <CircularProgress color="inherit" />
         </div>
       )}
     </div>

@@ -3,6 +3,7 @@ import "./header.css";
 
 function Header() {
   const [mobileView, setMobileView] = useState(false);
+
   // Window Resize Event Listener for Mobile Topbar
   useEffect(() => {
     const setResponsiveness = () => {
@@ -21,7 +22,7 @@ function Header() {
 
   return (
     <div className="header-screen">
-      {/* Need a nested div so the parent can have grey background otherwise corners will have blank spots */}
+      {/* Dynamic classname for mobile view responsive header */}
       <div
         className={`header-wrapper ${
           mobileView ? "mobile-header-wrapper" : ""

@@ -11,8 +11,11 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-dotenv": "^0.1.3",
+    "react-lazy-load-image-component": "^1.5.1",
+    "react-masonry-css": "^1.0.16",
     "react-scripts": "4.0.3",
     "unsplash-js": "^7.0.15",
+    "use-state-with-callback": "^2.0.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
