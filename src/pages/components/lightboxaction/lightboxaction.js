@@ -3,11 +3,13 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 import "./lightboxaction.css";
 
 function LightboxAction(props) {
   /* Define an upper limit, better to do it here than in a conditional statement */
   var upperLimit = props.feedLength - 1;
+
   return (
     <div
       className="image-lightbox-action"

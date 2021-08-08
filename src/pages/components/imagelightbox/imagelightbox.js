@@ -50,7 +50,9 @@ function ImageLightbox(props) {
             </div>
             {/* Container for the image alt description */}
             <div className="image-lightbox-image-content-description">
-              {props.selectedImage.image.alt_description.toUpperCase()}
+              {props.selectedImage.image.alt_description != null
+                ? props.selectedImage.image.alt_description.toUpperCase()
+                : "There's no description for this image :("}
             </div>
           </div>
         </div>
