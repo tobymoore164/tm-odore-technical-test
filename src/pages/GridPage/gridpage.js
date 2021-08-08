@@ -10,7 +10,6 @@ function GridPage() {
   // Variables
   const [contentReady, setContentReady] = useState(false);
   const [imageFeed, setImageFeed] = useState([]);
-  const [renderForce, setRenderForce] = useState(false);
 
   // If image feed is empty it's first load, get the first 20 images.
   if (imageFeed != null && imageFeed.length === 0) {
@@ -23,23 +22,12 @@ function GridPage() {
       // If there's no feed, set the state directly
       if (imageFeed != null && imageFeed.length === 0) {
         setImageFeed(res);
-
         setContentReady(true);
-
-        /* setTimeout(() => {
-          
-        }, 1000); */
       } else {
         // There's already a feed, push them to the current feed
         res.forEach((newImage) => {
           setImageFeed((prevState) => [...prevState, newImage]);
         });
-
-        setRenderForce(!renderForce);
-
-        /* setTimeout(() => {
-          
-        }, 1000); */
       }
     });
   }

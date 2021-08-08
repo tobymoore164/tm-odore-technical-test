@@ -1,5 +1,8 @@
 import "./imagegrid.css";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import {
+  LazyLoadComponent,
+  LazyLoadImage,
+} from "react-lazy-load-image-component";
 import { useRef } from "react";
 import Masonry from "react-masonry-css";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -7,6 +10,7 @@ import { useState } from "react";
 import ImageLightbox from "../imagelightbox/imagelightbox";
 import { Button } from "@material-ui/core";
 import MasonryInfiniteScroller from "react-masonry-infinite";
+import { GetSizesByIndex } from "../../../helpers/api";
 
 function ImageGrid(props) {
   const [showImageLightbox, setShowImageLightbox] = useState(false);
@@ -56,9 +60,9 @@ function ImageGrid(props) {
                 className="image-grid-item"
                 alt={image.alt_description}
                 effect="blur"
-                width={image.size != null ? image.size.width : 400}
-                height={image.size != null ? image.size.height : 400}
-                src={image.urls.small}
+                width={400}
+                height={400}
+                src={image.urls.regular}
                 onClick={() => {
                   handleSetSelectedImage(index);
                   setShowImageLightbox(true);
@@ -67,20 +71,12 @@ function ImageGrid(props) {
             );
           })}
         </MasonryInfiniteScroller>
-        <Button
-          onClick={() => {
-            props.RequestNewImages();
-          }}
-        >
-          Debug
-        </Button>
       </div>
     </div>
   );
 }
 
 export default ImageGrid;
-
 {
   /* <Masonry
           breakpointCols={columnBreakpoints}

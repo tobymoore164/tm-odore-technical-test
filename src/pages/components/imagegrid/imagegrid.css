@@ -12,3 +12,11 @@
 .fix-height {
     height: 94vh;
 }
+
+
+.lazyloaded-image-item {
+    height: auto; 
+    width: auto; 
+    max-width: 300px; 
+    min-height: 300px;
+}
