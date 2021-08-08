@@ -22,7 +22,10 @@ function GridPage() {
       // If there's no feed, set the state directly
       if (imageFeed != null && imageFeed.length === 0) {
         setImageFeed(res);
-        setContentReady(true);
+
+        setTimeout(() => {
+          setContentReady(true);
+        }, 1500);
       } else {
         // There's already a feed, push them to the current feed
         res.forEach((newImage) => {

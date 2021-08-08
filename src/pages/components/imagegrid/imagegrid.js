@@ -60,8 +60,10 @@ function ImageGrid(props) {
                 className="image-grid-item"
                 alt={image.alt_description}
                 effect="blur"
-                width={400}
-                height={400}
+                /* width={400}
+                height={400} */
+                width={image.size != null ? image.size.width : 400}
+                height={image.size != null ? image.size.height : 400}
                 src={image.urls.regular}
                 onClick={() => {
                   handleSetSelectedImage(index);
@@ -77,35 +79,3 @@ function ImageGrid(props) {
 }
 
 export default ImageGrid;
-{
-  /* <Masonry
-          breakpointCols={columnBreakpoints}
-          className="image-masonry-grid"
-          columnClassName="image-masonry-grid-column"
-        > */
-}
-{
-  /* Map the feed to get every image */
-}
-/* {props.imageFeed.map((image, index) => {
-            return ( */
-/* Render a lazyLoadImage for each image, this handles lazy loading of individual images */
-{
-  /* <LazyLoadImage
-                key={index}
-                className="image-grid-item"
-                alt={image.alt_description}
-                effect="blur" */
-}
-/* Width and Height uses the custom size property we setup when getting the feed */
-/* width={image.size != null ? image.size.width : 400}
-                height={image.size != null ? image.size.height : 400}
-                src={image.urls.small} */ // use normal <img> attributes as props
-/* onClick={() => {
-                  handleSetSelectedImage(index); */ // set the selected image index to the one we're tapping on
-/* setShowImageLightbox(true); */ // show the lightbox
-/*  }}
-              />
-            );
-          })}
-        </Masonry> */
